@@ -1,10 +1,8 @@
 from discord.ext import commands
 from os import getenv
 import traceback
-import random
 
 bot = commands.Bot(command_prefix='/')
-
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -16,12 +14,6 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-
-@bot.command()
-async def luck(ctx):
-    rand = random.randint(0, 100)
-    result = '成功！' if rand < 15 else '失敗'
-    await ctx.send(result)
 
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
